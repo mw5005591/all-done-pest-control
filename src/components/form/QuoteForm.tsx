@@ -49,7 +49,6 @@ const stateOptions = [
 
 export default function QuoteForm() {
 	const [formData, setFormData] = useState<FormData>(initialFormData);
-	const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 	const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
 	function validate(): boolean {
@@ -70,27 +69,9 @@ export default function QuoteForm() {
 		return Object.keys(newErrors).length === 0;
 	}
 
-	async function handleSubmit(e: React.FormEvent) {
-		e.preventDefault();
-		if (!validate()) return;
-
-		setStatus("submitting");
-
-		try {
-			const res = await fetch("/api/quote", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(formData),
-			});
-
-			if (res.ok) {
-				setStatus("success");
-				setFormData(initialFormData);
-			} else {
-				setStatus("error");
-			}
-		} catch {
-			setStatus("error");
+	function handleSubmit(e: React.FormEvent) {
+		if (!validate()) {
+			e.preventDefault();
 		}
 	}
 
@@ -104,27 +85,8 @@ export default function QuoteForm() {
 		}
 	}
 
-	if (status === "success") {
-		return (
-			<div className="bg-green-50 border border-green-200 rounded-xl p-8 md:p-12 text-center">
-				<div className="w-16 h-16 rounded-full bg-brand-green/10 flex items-center justify-center mx-auto mb-4">
-					<svg className="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-					</svg>
-				</div>
-				<h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
-				<p className="text-gray-600 mb-2">
-					Your quote request has been submitted successfully.
-				</p>
-				<p className="text-gray-600">
-					We&apos;ll review your information and reach out within 1 business day.
-				</p>
-			</div>
-		);
-	}
-
 	return (
-		<form onSubmit={handleSubmit} noValidate className="space-y-5">
+		<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" noValidate className="space-y-5">
 			{/* Name row */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<Field
@@ -276,20 +238,13 @@ export default function QuoteForm() {
 					type="submit"
 					size="lg"
 					className="w-full sm:w-auto"
-					disabled={status === "submitting"}
 				>
-					{status === "submitting" ? "Submitting..." : "Request My Free Quote"}
+					Request My Free Quote
 				</Button>
 				<p className="text-sm text-gray-500 mt-3">
 					No obligation &bull; We typically respond within 1 business day
 				</p>
 			</div>
-
-			{status === "error" && (
-				<p className="text-red-600 text-sm">
-					Something went wrong. Please try again or call us directly.
-				</p>
-			)}
 		</form>
 	);
 }

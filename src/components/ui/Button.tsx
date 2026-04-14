@@ -10,7 +10,7 @@ interface ButtonBaseProps {
 	className?: string;
 }
 
-interface ButtonAsButton extends ButtonBaseProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonAsButton extends ButtonBaseProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
 	href?: never;
 }
 

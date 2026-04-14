@@ -24,7 +24,7 @@
   --color-gray-900: #111827;
 
   /* Font */
-  --font-sans: var(--font-inter);
+  --font-sans: system-ui, -apple-system, sans-serif;
 }
 
 body {
