@@ -53,6 +53,7 @@ export default function QuoteForm() {
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
+		e.stopPropagation();
 		if (!validate()) return;
 		setStatus("loading");
 
