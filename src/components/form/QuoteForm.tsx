@@ -51,14 +51,17 @@ export default function QuoteForm() {
 		return Object.keys(newErrors).length === 0;
 	}
 
-	async function handleSubmit(e: React.FormEvent) {
+	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		// Stop the browser from doing ANYTHING (refreshing/adding params to URL)
 		e.preventDefault();
 		e.stopPropagation();
+
 		if (!validate()) return;
 		setStatus("loading");
 
 		try {
-			const res = await fetch("/api/contact", {
+			// Added the trailing slash to match your next.config.ts
+			const res = await fetch("/api/contact/", {
 				method: "POST",
 				body: JSON.stringify(formData),
 				headers: { "Content-Type": "application/json" },
@@ -87,7 +90,7 @@ export default function QuoteForm() {
 			<div className="bg-green-50 p-8 rounded-xl text-center border border-green-200">
 				<h3 className="text-xl font-bold text-green-800">Request Sent Successfully!</h3>
 				<p className="mt-2 text-green-700">We will get back to you within 1 business day.</p>
-				<button onClick={() => setStatus("idle")} className="mt-4 text-green-600 underline">Send another request</button>
+				<button type="button" onClick={() => setStatus("idle")} className="mt-4 text-green-600 underline">Send another request</button>
 			</div>
 		);
 	}
@@ -131,8 +134,8 @@ export default function QuoteForm() {
 				<div>
 					<label className="block text-sm font-medium text-gray-700 mb-1.5">Property Type</label>
 					<div className="flex gap-4 mt-2">
-						<label className="flex items-center gap-2"><input type="radio" name="propertyType" value="residential" checked={formData.propertyType === "residential"} onChange={handleChange} /> Residential</label>
-						<label className="flex items-center gap-2"><input type="radio" name="propertyType" value="commercial" checked={formData.propertyType === "commercial"} onChange={handleChange} /> Commercial</label>
+						<label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="propertyType" value="residential" checked={formData.propertyType === "residential"} onChange={handleChange} /> Residential</label>
+						<label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="propertyType" value="commercial" checked={formData.propertyType === "commercial"} onChange={handleChange} /> Commercial</label>
 					</div>
 				</div>
 			</div>
@@ -153,7 +156,7 @@ function Field({ label, name, type = "text", value, onChange, error, required }:
 	return (
 		<div>
 			<label className="block text-sm font-medium text-gray-700 mb-1.5">{label} {required && "*"}</label>
-			<input type={type} name={name} value={value} onChange={onChange} className={`w-full rounded-lg border px-4 py-2.5 ${error ? "border-red-400" : "border-gray-300"}`} />
+			<input type={type} name={name} id={name} value={value} onChange={onChange} className={`w-full rounded-lg border px-4 py-2.5 ${error ? "border-red-400" : "border-gray-300"}`} />
 			{error && <p className="text-red-500 text-xs mt-1">{error}</p>}
 		</div>
 	);
