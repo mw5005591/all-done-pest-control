@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
-  output: "export",
+  // Cloudflare Pages compatible configuration
+  assetPrefix: "",
 };
 
 export default nextConfig;
