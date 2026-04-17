@@ -12,8 +12,7 @@ export const onRequestPost = async (context: any) => {
       },
       body: JSON.stringify({
         from: "All Done Pest Control <onboarding@resend.dev>",
-        to: ["abedaskal@gmail.com"],
-        cc: ["mw5005591@gmail.com"],
+        to: ["mw5005591@gmail.com"],
         subject: `New Quote Request: ${firstName} ${lastName}`,
         html: `
           <h2>New Quote Request</h2>
