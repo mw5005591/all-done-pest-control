@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import {
 	Bug,
 	Rat,
@@ -10,17 +11,12 @@ import {
 	RefreshCw,
 	Building2,
 } from "lucide-react";
+import PageHead from "@/components/layout/PageHead";
 import PageHero from "@/components/layout/PageHero";
 import Section from "@/components/ui/Section";
 import ServiceCard from "@/components/content/ServiceCard";
 import CTABlock from "@/components/content/CTABlock";
 import Button from "@/components/ui/Button";
-
-export const metadata: Metadata = {
-	title: "Pest Control Services | All Done Pest Control",
-	description:
-		"From termites to rodents to mosquitoes, All Done Pest Control provides safe, effective treatment for homes and businesses in NY, NJ & CT.",
-};
 
 const residentialServices = [
 	{
@@ -111,6 +107,10 @@ const processSteps = [
 export default function ServicesPage() {
 	return (
 		<>
+			<PageHead 
+				title="Pest Control Services | All Done Pest Control"
+				description="From termites to rodents to mosquitoes, All Done Pest Control provides safe, effective treatment for homes and businesses in NY, NJ & CT."
+			/>
 			<PageHero
 				title="Our Pest Control Services"
 				subtitle="Eco-friendly, family-safe pest control for homes and businesses across New York, New Jersey, and Connecticut."

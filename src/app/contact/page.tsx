@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Phone, Clock, CheckCircle } from "lucide-react";
+import PageHead from "@/components/layout/PageHead";
 import Section from "@/components/ui/Section";
 import QuoteForm from "@/components/form/QuoteForm";
 import TestimonialCard from "@/components/content/TestimonialCard";
 import { PHONE_TEL, PHONE_NUMBER } from "@/components/ui/PhoneNumber";
-
-export const metadata: Metadata = {
-	title: "Get a Free Quote | All Done Pest Control",
-	description:
-		"Request your free, no-obligation pest control quote from All Done Pest Control. Serving NY, NJ & CT.",
-};
 
 const expectSteps = [
 	"We review your information and assess your needs",
@@ -20,6 +16,10 @@ const expectSteps = [
 export default function ContactPage() {
 	return (
 		<>
+			<PageHead 
+				title="Get a Free Quote | All Done Pest Control"
+				description="Request your free, no-obligation pest control quote from All Done Pest Control. Serving NY, NJ & CT."
+			/>
 			{/* Hero area */}
 			<section className="bg-gradient-to-br from-brand-blue-light via-white to-green-50 py-12 md:py-16">
 				<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">

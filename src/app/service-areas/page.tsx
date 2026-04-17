@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import { MapPin } from "lucide-react";
+import PageHead from "@/components/layout/PageHead";
 import PageHero from "@/components/layout/PageHero";
 import Section from "@/components/ui/Section";
 import StateCard from "@/components/content/StateCard";
 import CTABlock from "@/components/content/CTABlock";
-
-export const metadata: Metadata = {
-	title: "Service Areas — NY, NJ & CT | All Done Pest Control",
-	description:
-		"All Done Pest Control serves New York, New Jersey, and Connecticut with eco-friendly residential and commercial pest control services.",
-};
 
 const states = [
 	{
@@ -38,6 +34,10 @@ const states = [
 export default function ServiceAreasPage() {
 	return (
 		<>
+			<PageHead 
+				title="Service Areas — NY, NJ & CT | All Done Pest Control"
+				description="All Done Pest Control serves New York, New Jersey, and Connecticut with eco-friendly residential and commercial pest control services."
+			/>
 			<PageHero
 				title="Service Areas"
 				subtitle="All Done Pest Control proudly serves homes and businesses across New York, New Jersey, and Connecticut."

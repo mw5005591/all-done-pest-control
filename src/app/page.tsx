@@ -1,3 +1,5 @@
+\"use client\";
+
 import {
 	Bug,
 	Rat,
@@ -7,8 +9,9 @@ import {
 	Heart,
 	Search,
 	MapPin,
-} from "lucide-react";
-import PageHero from "@/components/layout/PageHero";
+} from \"lucide-react\";
+import PageHead from \"@/components/layout/PageHead\";
+import PageHero from \"@/components/layout/PageHero\";
 import TrustBar from "@/components/content/TrustBar";
 import Section from "@/components/ui/Section";
 import ServiceCard from "@/components/content/ServiceCard";
@@ -119,6 +122,10 @@ const testimonials = [
 export default function HomePage() {
 	return (
 		<>
+			<PageHead 
+				title="All Done Pest Control | Eco-Friendly Pest Control in NY, NJ & CT"
+				description="All Done Pest Control offers eco-friendly, family-safe pest control for homes and businesses across New York, New Jersey, and Connecticut. Get your free quote today."
+			/>
 			{/* Hero */}
 			<PageHero
 				tagline="They Hide. We Seek."

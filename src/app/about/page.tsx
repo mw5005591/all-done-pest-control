@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Leaf, Heart, Search, Shield } from "lucide-react";
+import PageHead from "@/components/layout/PageHead";
 import PageHero from "@/components/layout/PageHero";
 import Section from "@/components/ui/Section";
 import ValueCard from "@/components/content/ValueCard";
 import CTABlock from "@/components/content/CTABlock";
-
-export const metadata: Metadata = {
-	title: "About Us | All Done Pest Control",
-	description:
-		"Learn about All Done Pest Control — our commitment to eco-friendly solutions, family safety, and reliable pest control across the tri-state area.",
-};
 
 const values = [
 	{
@@ -41,6 +37,10 @@ const values = [
 export default function AboutPage() {
 	return (
 		<>
+			<PageHead 
+				title="About Us | All Done Pest Control"
+				description="Learn about All Done Pest Control — our commitment to eco-friendly solutions, family safety, and reliable pest control across the tri-state area."
+			/>
 			<PageHero
 				title="About All Done Pest Control"
 				subtitle="We're a pest control company built on a simple idea: you shouldn't have to choose between effective pest treatment and the safety of your family, pets, and environment."
