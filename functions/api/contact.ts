@@ -14,7 +14,17 @@ export const onRequestPost = async (context: any) => {
         from: "All Done Pest Control <onboarding@resend.dev>",
         to: ["mw5005591@gmail.com"],
         subject: `New Quote Request: ${firstName} ${lastName}`,
-        html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`,
+        html: `
+          <h2>New Quote Request</h2>
+          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Address/ZIP:</strong> ${address}</p>
+          <p><strong>State:</strong> ${state}</p>
+          <p><strong>Pest Type:</strong> ${pestType}</p>
+          <p><strong>Property Type:</strong> ${propertyType}</p>
+          <p><strong>Message:</strong> ${message}</p>
+        `,
       }),
     });
 
