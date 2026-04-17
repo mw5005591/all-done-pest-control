@@ -1,4 +1,4 @@
-\"use client\";
+"use client";
 
 import {
 	Bug,
@@ -9,9 +9,9 @@ import {
 	Heart,
 	Search,
 	MapPin,
-} from \"lucide-react\";
-import PageHead from \"@/components/layout/PageHead\";
-import PageHero from \"@/components/layout/PageHero\";
+} from "lucide-react";
+import PageHead from "@/components/layout/PageHead";
+import PageHero from "@/components/layout/PageHero";
 import TrustBar from "@/components/content/TrustBar";
 import Section from "@/components/ui/Section";
 import ServiceCard from "@/components/content/ServiceCard";
